@@ -209,6 +209,23 @@ document.getElementById("add-route").addEventListener("click", function () {
     if (el.tagName === "INPUT") el.value = "";
   });
 
+  newRoute.querySelector("h4").innerText = `Lộ trình ${routeCount}`;
+
+  // Thêm nút "Xóa" nếu chưa có
+  if (!newRoute.querySelector(".remove-route")) {
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "remove-route";
+    removeBtn.innerText = "Xóa";
+    removeBtn.style.cssText = "background: #e53935; color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;";
+    const header = newRoute.querySelector(":scope > div"); // chọn đúng div tiêu đề
+    if (header) header.appendChild(removeBtn);
+  }
+
+  routesContainer.appendChild(newRoute);
+  addRemoveEvents();
+});
+
   // Xóa nút "Xóa" cũ nếu bị clone dư
   const existingRemove = newRoute.querySelectorAll(".remove-route");
   if (existingRemove.length > 1) {
