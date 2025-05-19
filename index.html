@@ -116,7 +116,10 @@
       </div>
     </div>
 
-      <button type="button" id="add-route" style="margin-bottom: 16px;">Thêm Lộ Trình</button>
+    <div style="text-align: right; margin-bottom: 16px;">
+      <button type="button" id="add-route" style="padding: 8px 16px; background-color: #4caf50; color: white; border: none; border-radius: 4px; cursor: pointer;">+ Thêm Lộ Trình</button>
+    </div>
+
 
       <label>Yêu cầu khác:</label>
       <textarea name="other-request" rows="3" style="width: 100%;"></textarea>
@@ -168,6 +171,57 @@
 </div>
 </form>
   </div>
-<script src="script.js"></script>
   <script src="script-fixed.js"></script>
+    <script>
+      function updateRouteTitles() {
+        document.querySelectorAll("#routes .route").forEach((route, index) => {
+          const title = route.querySelector("h4");
+          if (title) title.innerText = `Lộ trình ${index + 1}`;
+        });
+      }
+
+      function addRemoveEvents() {
+        document.querySelectorAll(".remove-route").forEach(btn => {
+          btn.onclick = function () {
+            const allRoutes = document.querySelectorAll("#routes .route");
+            if (allRoutes.length > 1) {
+              btn.closest(".route").remove();
+              updateRouteTitles();
+            } else {
+              alert("Phải có ít nhất một lộ trình.");
+            }
+          };
+        });
+      }
+
+      
+document.getElementById("add-route").addEventListener("click", function () {
+  const routesContainer = document.getElementById("routes");
+  const routeCount = routesContainer.querySelectorAll(".route").length + 1;
+
+  const firstRoute = routesContainer.querySelector(".route");
+  const newRoute = firstRoute.cloneNode(true);
+
+  // Reset tất cả input/select và cập nhật name theo thứ tự
+  newRoute.querySelectorAll("input, select").forEach(el => {
+    const base = el.name.split("-")[0];
+    el.name = `${base}-${routeCount}`;
+    if (el.tagName === "INPUT") el.value = "";
+  });
+
+  // Xóa nút "Xóa" cũ nếu bị clone dư
+  const existingRemove = newRoute.querySelectorAll(".remove-route");
+  if (existingRemove.length > 1) {
+    for (let i = 1; i < existingRemove.length; i++) existingRemove[i].remove();
+  }
+
+  newRoute.querySelector("h4").innerText = `Lộ trình ${routeCount}`;
+
+  routesContainer.appendChild(newRoute);
+  addRemoveEvents();
+});
+
+      addRemoveEvents();
+    </script>
+  </div>
 </body>
