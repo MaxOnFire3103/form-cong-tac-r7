@@ -70,12 +70,12 @@
 </div>
 
       <h3 style="margin-top: 24px; color: #2e7d32;">Kế Hoạch Công Tác</h3>
-      <div id="routes">
-        <div class="route" style="background-color: #e6f4ea; border: 1.5px dashed #4caf50; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+    <div id="routes">
+      <div class="route" style="background-color: #e6f4ea; border: 1.5px dashed #4caf50; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
         <h4 style="margin-bottom: 16px; color:#2e7d32; font-weight: bold;">Lộ trình 1</h4>
 
         <!-- Hàng 1 -->
-        <div class="route-row" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+        <div class="route-row" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 0;">
           <div style="flex: 1 1 200px; min-width: 200px;">
             <label style="display: block; font-weight: bold; margin-bottom: 4px;">Lộ trình</label>
             <select name="route-name-1" required style="width: 100%; padding: 4px;">
@@ -88,33 +88,21 @@
           <div style="flex: 1 1 150px; min-width: 150px;">
             <label style="display: block; font-weight: bold; margin-bottom: 4px;">Ngày đi</label>
             <input type="date" name="depart-1" required style="width: 100%; padding: 4px;">
+            <label style="display: block; font-weight: bold; margin: 8px 0 4px;">Giờ đi</label>
+            <input type="time" name="depart-time-1" style="width: 100%; padding: 4px;">
           </div>
 
           <div style="flex: 1 1 150px; min-width: 150px;">
             <label style="display: block; font-weight: bold; margin-bottom: 4px;">Ngày về</label>
             <input type="date" name="return-1" required style="width: 100%; padding: 4px;">
+            <label style="display: block; font-weight: bold; margin: 8px 0 4px;">Giờ về</label>
+            <input type="time" name="return-time-1" style="width: 100%; padding: 4px;">
           </div>
 
           <div style="flex: 1 1 150px; min-width: 150px;">
             <label style="display: block; font-weight: bold; margin-bottom: 4px;">Số ngày công tác</label>
             <input type="number" class="day-count" name="days-1" readonly style="width: 100%; padding: 4px;">
-          </div>
-        </div>
-
-        <!-- Hàng 2 -->
-        <div class="route-row" style="display: flex; flex-wrap: wrap; gap: 12px;">
-          <div style="flex: 1 1 150px; min-width: 150px;">
-            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Giờ đi</label>
-            <input type="time" name="depart-time-1" style="width: 100%; padding: 4px;">
-          </div>
-
-          <div style="flex: 1 1 150px; min-width: 150px;">
-            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Giờ về</label>
-            <input type="time" name="return-time-1" style="width: 100%; padding: 4px;">
-          </div>
-
-          <div style="flex: 1 1 200px; min-width: 200px;">
-            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Phương tiện</label>
+            <label style="display: block; font-weight: bold; margin: 8px 0 4px;">Phương tiện</label>
             <select name="transport-1" required style="width: 100%; padding: 4px;">
               <option value="Xe khách">Xe khách</option>
               <option value="Máy bay">Máy bay</option>
