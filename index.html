@@ -1,0 +1,183 @@
+<body>
+  <div class="form-container" style="max-width: 850px; margin: auto; padding: 24px; background-color: #f1f8f4; border: 2px dashed #4caf50; border-radius: 8px; font-family: Tahoma, sans-serif; font-size: 13px;">
+   <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
+  <img id="company-logo" src="logo-swensens.png" alt="Logo" style="height: 60px;">
+  <select id="company-name" onchange="updateCompanyInfo(this.value)" style="font-weight: bold; font-size: 15px; border: none; outline: none; background: transparent;">
+    <option value="swensens">CÔNG TY CỔ PHẦN KEM AN MINH</option>
+    <option value="pizza">CÔNG TY CỔ PHẦN PIZZA NGON</option>
+    <option value="dq">CÔNG TY CỔ PHẦN DQ VIỆT NAM</option>
+    <option value="aka">CÔNG TY CỔ PHẦN AKA HOUSE</option>
+    <option value="chang">CÔNG TY TNHH CHANG THAI CUISINE</option>
+  </select>
+</div>
+<script>
+  function updateCompanyInfo(value) {
+    const logoMap = {
+      swensens: 'logo-swensens.png',
+      pizza: 'logo-pizza.png',
+      dq: 'logo-dq.png',
+      aka: 'logo-aka.png',
+      chang: 'logo-chang.png'
+    };
+    const nameMap = {
+      swensens: 'CÔNG TY CỔ PHẦN KEM AN MINH',
+      pizza: 'CÔNG TY CỔ PHẦN PIZZA NGON',
+      dq: 'CÔNG TY CỔ PHẦN DQ VIỆT NAM',
+      aka: 'CÔNG TY CỔ PHẦN AKA HOUSE',
+      chang: 'CÔNG TY TNHH CHANG THAI CUISINE'
+    };
+    document.getElementById('company-logo').src = logoMap[value];
+    document.getElementById('company-name').innerHTML =
+      `<option value=\"${value}\" selected>${nameMap[value]}</option>` +
+      Object.entries(nameMap).filter(([k]) => k !== value).map(([k, v]) => `<option value=\"${k}\">${v}</option>`).join('');
+  }
+</script>
+
+    <h3 style="text-align:center; font-weight:bold; margin: 4px 0;">Mẫu số: HR_QDCT 2023_01</h3>
+    <h4 style="text-align:center; font-weight:bold; color:#2e7d32; margin-bottom: 16px;">QUYẾT ĐỊNH CÔNG TÁC</h4>
+
+    <form id="work-form">
+      <div class="form-grid" style="display:grid; grid-template-columns: repeat(6, 1fr); gap:10px 10px; align-items:center; margin-bottom: 10px;">
+        <label style="grid-column: span 1;">Mã Nhân Viên:</label>
+        <input style="grid-column: span 2;" type="text" name="employee-id" required>
+        <label style="grid-column: span 1;">Bộ Phận:</label>
+        <input style="grid-column: span 2;" type="text" name="department" required>
+
+        <label style="grid-column: span 1;">Chức Vụ:</label>
+        <input style="grid-column: span 2;" type="text" name="position" required>
+        <label style="grid-column: span 1;">Người Đề Nghị:</label>
+        <input style="grid-column: span 2;" type="text" name="requester" required>
+
+        <label style="grid-column: span 1;">Email:</label>
+        <input style="grid-column: span 2;" type="email" name="email" required>
+        <label style="grid-column: span 1;">Ngày Đề Nghị:</label>
+        <input style="grid-column: span 2;" type="date" name="request-date" required>
+      </div>
+
+      <div class="form-grid" style="margin-bottom: 10px; display:grid; grid-template-columns: repeat(6, 1fr); gap:10px 10px;">
+        <label style="grid-column: span 1;">Email Người Duyệt :</label>
+        <input style="grid-column: span 2;" type="text" name="approver-email" required>
+        <label style="grid-column: span 1;">Mục Đích:</label>
+        <input style="grid-column: span 2;" type="text" name="purpose" required>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <label style="font-weight: bold; display: inline-block; margin-bottom: 6px;">Loại công tác:</label>
+        <select name="work-type" required style="width: 200px; padding: 4px 6px;">
+          <option value="short-term">Công tác ngắn ngày</option>
+          <option value="long-term">Công tác dài ngày</option>
+        </select>
+</div>
+
+      <h3 style="margin-top: 24px; color: #2e7d32;">Kế Hoạch Công Tác</h3>
+      <div id="routes">
+        <div class="route" style="background-color: #e6f4ea; border: 1.5px dashed #4caf50; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+        <h4 style="margin-bottom: 16px; color:#2e7d32; font-weight: bold;">Lộ trình 1</h4>
+
+        <!-- Hàng 1 -->
+        <div class="route-row" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+          <div style="flex: 1 1 200px; min-width: 200px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Lộ trình</label>
+            <select name="route-name-1" required style="width: 100%; padding: 4px;">
+              <option value="Bac Ninh - HAN">Bac Ninh - HAN</option>
+              <option value="Da Nang - SGN">Da Nang - SGN</option>
+              <option value="HCM - Ha Long">HCM - Ha Long</option>
+            </select>
+          </div>
+
+          <div style="flex: 1 1 150px; min-width: 150px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Ngày đi</label>
+            <input type="date" name="depart-1" required style="width: 100%; padding: 4px;">
+          </div>
+
+          <div style="flex: 1 1 150px; min-width: 150px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Ngày về</label>
+            <input type="date" name="return-1" required style="width: 100%; padding: 4px;">
+          </div>
+
+          <div style="flex: 1 1 150px; min-width: 150px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Số ngày công tác</label>
+            <input type="number" class="day-count" name="days-1" readonly style="width: 100%; padding: 4px;">
+          </div>
+        </div>
+
+        <!-- Hàng 2 -->
+        <div class="route-row" style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <div style="flex: 1 1 150px; min-width: 150px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Giờ đi</label>
+            <input type="time" name="depart-time-1" style="width: 100%; padding: 4px;">
+          </div>
+
+          <div style="flex: 1 1 150px; min-width: 150px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Giờ về</label>
+            <input type="time" name="return-time-1" style="width: 100%; padding: 4px;">
+          </div>
+
+          <div style="flex: 1 1 200px; min-width: 200px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Phương tiện</label>
+            <select name="transport-1" required style="width: 100%; padding: 4px;">
+              <option value="Xe khách">Xe khách</option>
+              <option value="Máy bay">Máy bay</option>
+              <option value="Tàu hỏa">Tàu hỏa</option>
+              <option value="Xe công ty">Xe công ty</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <button type="button" id="add-route" style="margin-bottom: 16px;">Thêm Lộ Trình</button>
+
+      <label>Yêu cầu khác:</label>
+      <textarea name="other-request" rows="3" style="width: 100%;"></textarea>
+
+      <h4 style="margin-top: 20px;">Tổng số ngày công tác: <span id="total-days">0</span> ngày</h4>
+
+      <h3 style="margin-top: 24px; color: #2e7d32;">Chi Phí Dự Kiến</h3>
+      <div class="cost-section" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:10px; align-items:center; margin-bottom:10px;">
+        <label>Giá vé phương tiện 1</label>
+        <input type="number" value="1" data-role="qty">
+        <input type="number" value="230000" data-role="price">
+        <input type="number" value="230000" data-role="subtotal" disabled>
+      </div>
+      <div class="cost-section" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:10px; align-items:center; margin-bottom:10px;">
+        <label>Khách sạn</label>
+        <input type="number" value="0" data-role="qty">
+        <input type="number" value="0" data-role="price">
+        <input type="number" value="0" data-role="subtotal" disabled>
+      </div>
+      <div class="cost-section" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:10px; align-items:center; margin-bottom:10px;">
+        <label>Phụ cấp công tác phí</label>
+        <input type="number" value="0" data-role="qty">
+        <input type="number" value="0" data-role="price">
+        <input type="number" value="0" data-role="subtotal" disabled>
+      </div>
+      <div class="cost-section" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:10px; align-items:center; margin-bottom:10px;">
+        <label>Chi phí khác</label>
+        <input type="number" value="0" data-role="qty">
+        <input type="number" value="0" data-role="price">
+        <input type="number" value="0" data-role="subtotal" disabled>
+      </div>
+
+      <h4 style="margin-top: 12px;">Tổng Chi Phí Dự Kiến: <span id="total-cost">0</span> VNĐ</h4>
+
+      <button type="submit" style="margin-top: 16px;">Gửi</button>
+    <div style="margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end;">
+  <div style="text-align: center;">
+    <p><strong>Người đề nghị</strong></p>
+    <p style="font-style: italic; font-size: 12px;">(Chữ ký số/Chữ ký tay)</p>
+    <div style="height: 60px;"></div>
+    <p>........................................</p>
+  </div>
+  <div style="text-align: center;">
+    <p><strong>Người duyệt</strong></p>
+    <p style="font-style: italic; font-size: 12px;">(Chữ ký số/Chữ ký tay)</p>
+    <div style="height: 60px;"></div>
+    <p>........................................</p>
+  </div>
+</div>
+</form>
+  </div>
+<script src="script.js"></script>
+  <script src="script-fixed.js"></script>
+</body>
