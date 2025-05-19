@@ -28,8 +28,8 @@
     };
     document.getElementById('company-logo').src = logoMap[value];
     document.getElementById('company-name').innerHTML =
-      `<option value=\"${value}\" selected>${nameMap[value]}</option>` +
-      Object.entries(nameMap).filter(([k]) => k !== value).map(([k, v]) => `<option value=\"${k}\">${v}</option>`).join('');
+      <option value=\"${value}\" selected>${nameMap[value]}</option> +
+      Object.entries(nameMap).filter(([k]) => k !== value).map(([k, v]) => <option value=\"${k}\">${v}</option>).join('');
   }
 </script>
 
@@ -176,7 +176,7 @@
       function updateRouteTitles() {
         document.querySelectorAll("#routes .route").forEach((route, index) => {
           const title = route.querySelector("h4");
-          if (title) title.innerText = `Lộ trình ${index + 1}`;
+          if (title) title.innerText = Lộ trình ${index + 1};
         });
       }
 
@@ -202,33 +202,12 @@ document.getElementById("add-route").addEventListener("click", function () {
   const firstRoute = routesContainer.querySelector(".route");
   const newRoute = firstRoute.cloneNode(true);
 
-  // Reset input/select và cập nhật name
+  // Reset tất cả input/select và cập nhật name theo thứ tự
   newRoute.querySelectorAll("input, select").forEach(el => {
     const base = el.name.split("-")[0];
-    el.name = `${base}-${routeCount}`;
+    el.name = ${base}-${routeCount};
     if (el.tagName === "INPUT") el.value = "";
   });
-
-  newRoute.querySelector("h4").innerText = `Lộ trình ${routeCount}`;
-
-  // Thêm nút XÓA nếu chưa có
-  if (!newRoute.querySelector(".remove-route")) {
-    const removeBtn = document.createElement("button");
-    removeBtn.type = "button";
-    removeBtn.className = "remove-route";
-    removeBtn.innerText = "Xóa";
-    removeBtn.style.cssText = "background: #e53935; color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;";
-
-    // Đặt đúng vị trí sau thẻ <h4>
-    const headerRow = newRoute.querySelector("div");
-    if (headerRow) {
-      headerRow.appendChild(removeBtn);
-    }
-  }
-
-  routesContainer.appendChild(newRoute);
-  addRemoveEvents();
-});
 
   // Xóa nút "Xóa" cũ nếu bị clone dư
   const existingRemove = newRoute.querySelectorAll(".remove-route");
@@ -236,7 +215,7 @@ document.getElementById("add-route").addEventListener("click", function () {
     for (let i = 1; i < existingRemove.length; i++) existingRemove[i].remove();
   }
 
-  newRoute.querySelector("h4").innerText = `Lộ trình ${routeCount}`;
+  newRoute.querySelector("h4").innerText = Lộ trình ${routeCount};
 
   routesContainer.appendChild(newRoute);
   addRemoveEvents();
