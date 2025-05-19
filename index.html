@@ -202,20 +202,25 @@ document.getElementById("add-route").addEventListener("click", function () {
   const firstRoute = routesContainer.querySelector(".route");
   const newRoute = firstRoute.cloneNode(true);
 
-  // Reset tất cả input/select và cập nhật name theo thứ tự
+  // Reset input/select và cập nhật name
   newRoute.querySelectorAll("input, select").forEach(el => {
     const base = el.name.split("-")[0];
     el.name = `${base}-${routeCount}`;
     if (el.tagName === "INPUT") el.value = "";
   });
 
-  // Xóa nút "Xóa" cũ nếu bị clone dư
-  const existingRemove = newRoute.querySelectorAll(".remove-route");
-  if (existingRemove.length > 1) {
-    for (let i = 1; i < existingRemove.length; i++) existingRemove[i].remove();
-  }
-
   newRoute.querySelector("h4").innerText = `Lộ trình ${routeCount}`;
+
+  // Thêm nút "Xóa" nếu chưa có
+  if (!newRoute.querySelector(".remove-route")) {
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "remove-route";
+    removeBtn.innerText = "Xóa";
+    removeBtn.style.cssText = "background: #e53935; color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;";
+    const header = newRoute.querySelector("div");
+    header.appendChild(removeBtn);
+  }
 
   routesContainer.appendChild(newRoute);
   addRemoveEvents();
